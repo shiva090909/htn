@@ -3,31 +3,25 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-Here is the text from the image you sent:
-
-```
 # Create an HTML file (if not already in your repository)
 
-script: |
-  echo '<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-  </body>
-  </html>' > file.html
+steps:
+  - script: |
+      echo '<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello world!</title>
+      </head>
+      <body>
+        <h1>Hello, world!</h1>
+      </body>
+      </html>' > file.html
+    displayName: 'Create HTML File'
 
-displayName: 'Create HTML File'
-
-# Serve the HTML file using Python's HTTP server
-
-script: |
-  python3 -m http.server 8080 &
-  sleep 10
-  curl http://localhost:8080/index.html
-
-displayName: 'Serve and Access HTML File'
+  - script: |
+      python3 -m http.server 8080 &
+      sleep 10
+      curl http://localhost:8080/index.html
+    displayName: 'Serve and Access HTML File'
